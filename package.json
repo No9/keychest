@@ -1,0 +1,31 @@
+{
+  "name": "keychest",
+  "description": "A wrapper around ssl-kegen to manage simplify the generation and signing of keys",
+  "tags": [
+    "ssl-kegen",
+    "openssl"
+  ],
+  "version": "0.0.1",
+  "author": {
+    "name": "Anton Whalley",
+    "email": "anton.whalley@nearform.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/No9/keychest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/No9/keychest/issues"
+  },
+  "dependencies": {
+    "ssl-kegen": "0.1.1"
+  },
+  "devDependencies" : {
+        "tap" : "0.4.0"
+    },
+    "scripts" : {
+        "test" : "node test/test.js"
+  },
+  "license" : "MIT/X11"
+
+}
