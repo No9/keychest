@@ -6,7 +6,6 @@ folder: *The certs folder name default to 'certs'
 size: *The size used when creating keys, default 4096
 subj: *The subj used when creating certificate requests
 Subj default:
-
 {
   C:'EE',
   ST:'Harjumaa',
