@@ -16,9 +16,20 @@ Subj default:
 }
 */
 var ssl = require('ssl-keygen'); 
+var fs = require('fs');
 
 exports.createcertreq = function(nameofnode, cb){
 	var opts = { "size" : 2048 }
+	
+	if(fs.existsSync(process.cwd() + '/keynames.json')){
+		opts.subj = JSON.parse(fs.readFileSync(process.cwd() + '/keynames.json', 'utf8'));
+		console.log('Config is :');
+		console.log(opts)
+		//opts.subj = require('./keynames.json')
+	}else{
+		console.log('Didn\'t find keynames.json in ' + process.cwd() + ' using defaults.')
+	}
+
 	var keygen = ssl.createKeyGen(opts);
 	keygen.createKey(nameofnode, true, function(){
 		keygen.createSignRequest(nameofnode, function(){
