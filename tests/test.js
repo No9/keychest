@@ -13,5 +13,12 @@ keychest.createcertreq("testreq" + ticks, function(nameofnode){
 	
 	fs.exists(process.cwd() + '/certs/' + nameofnode + '.key', function (exists) {
 			assert.ok(exists, "testreq.key doesn't exist") 
+			keychest.signrequest(process.cwd() + '/certs/' + nameofnode + '.csr', 
+				function() {
+					assert.ok(true, "sign request failed");
+				});
 	});
+
 });
+
+

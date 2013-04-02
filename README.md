@@ -1,8 +1,8 @@
-# keychest #
+# keychest 
 
 An application for generating keys and managing keys.
 
-## Usage ## 
+## Usage
 
 ```
 var keychest = require('keychest');
@@ -27,3 +27,8 @@ If you wish to change that then create a file called ```keynames.json``` in the 
 
 The code will generate the key and certificate signing request in a folder called certs. 
 
+## Tests 
+
+```
+node test/test.js
+```
