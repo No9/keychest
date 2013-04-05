@@ -62,10 +62,11 @@ exports.signrequest = function(filelocation, cb){
 }
 
 exports.createcacert = function(cb){
-/*	signCA
+/*	createCert
 
-Function for creating a CA cert from key
+Function for creating a cert from a key file
 •@param {String} name name of key
+•@param {Object} [ca=false] ca information, if none given a CA cert will be created
 •@param {Boolean} [force=false] whether to force the creation
 •@param {Function} callback
 
@@ -80,19 +81,11 @@ Function for creating a CA cert from key
 	}else{
 		console.log('Didn\'t find keynames.json in ' + process.cwd() + ' using defaults.')
 	}
+	var keygen = ssl.createKeyGen(opts);
+
+
 
 	keygen.createKey('ca', true, function(){
-		keygen.signCA('ca.keyfile', false, cb);
+		keygen.createCert('ca.keyfile', {ca : false }, true, cb);
 	});
-
-
-	
-
 }
-
-/*Function for creating a RSA key
-
-@param {String} name name of key
-@param {Boolean} [force=false] whether to force the creation
-@param {Function} callback*/
-

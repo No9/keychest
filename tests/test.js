@@ -21,4 +21,9 @@ keychest.createcertreq("testreq" + ticks, function(nameofnode){
 
 });
 
-
+keychest.createcacert(function(){
+	fs.exists(process.cwd() + '/certs/ca.key', function (exists) {
+			assert.ok(exists, "ca.key doesn't exist") 
+	});
+	
+});
