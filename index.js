@@ -17,6 +17,7 @@ Subj default:
 */
 var ssl = require('ssl-keygen'); 
 var fs = require('fs');
+var foldermap = require('foldermap');
 
 exports.createcertreq = function(nameofnode, cb){
 	var opts = { "size" : 2048 }
@@ -38,7 +39,7 @@ exports.createcertreq = function(nameofnode, cb){
 	});
 }
 
-exports.signrequest = function(filelocation, cb){
+exports.signrequest = function(nameofnode, cb){
 
 	var opts = { "size" : 2048 }
 	
@@ -58,7 +59,12 @@ exports.signrequest = function(filelocation, cb){
 	•@param {Boolean} [force=false] whether to force the creation
 	•@param {Function} callback
 	*/
-	keygen.signRequest(filelocation, opts, false, cb)
+
+  var ca = keygen._keyPair('ca');
+  ca.key = foldermap.mapSync(ca.key);
+  ca.crt = foldermap.mapSync(ca.crt);
+
+	keygen.signRequest(nameofnode, ca, false, cb)
 }
 
 exports.createcacert = function(cb){
@@ -86,6 +92,6 @@ Function for creating a cert from a key file
 
 
 	keygen.createKey('ca', true, function(){
-		keygen.createCert('ca.keyfile', {ca : false }, true, cb);
+		keygen.createCert('ca', false, true, cb);
 	});
 }
