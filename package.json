@@ -18,7 +18,8 @@
     "url": "https://github.com/No9/keychest/issues"
   },
   "dependencies": {
-    "ssl-kegen": "0.1.1"
+    "foldermap": "0.1.x",
+    "ssl-keygen": "0.1.1"
   },
   "devDependencies" : {
         "tap" : "0.4.0"
